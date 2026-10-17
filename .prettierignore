@@ -1,0 +1,12 @@
+dist
+node_modules
+npm-shrinkwrap.json
+.claude
+.agents
+.gemini
+docker-compose*.yml
+compose*.yml
+Dockerfile*
+.dockerignore
+*.conf
+.env*

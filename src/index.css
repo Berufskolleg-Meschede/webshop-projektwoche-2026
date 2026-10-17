@@ -1,0 +1,41 @@
+@import './styles/tokens.css';
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Spline+Sans:wght@400;500;600&display=swap');
+
+@import 'tailwindcss';
+@config '../tailwind.config.js';
+
+:root {
+  font-family:
+    'Space Grotesk',
+    'Spline Sans',
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color: var(--BKM_WebShop-ink);
+  background-color: var(--BKM_WebShop-bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--BKM_WebShop-placeholder);
+  opacity: 1;
+}
+
+body {
+  margin: 0;
+  background: var(--BKM_WebShop-bg);
+  min-height: 100vh;
+}
+
+#root {
+  min-height: 100vh;
+}

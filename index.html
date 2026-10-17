@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/shopping-cart.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f4f6fb" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#12141f" media="(prefers-color-scheme: dark)" />
+    <title>IoT-Webshop</title>
+    <script>
+      // Apply the saved theme before first paint to avoid a light/dark flash (keep key in sync with useTheme).
+      try {
+        var savedTheme = localStorage.getItem('bkm-webshop-theme');
+        if (savedTheme === 'light' || savedTheme === 'dark') {
+          document.documentElement.classList.add(savedTheme);
+        }
+      } catch (error) {}
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

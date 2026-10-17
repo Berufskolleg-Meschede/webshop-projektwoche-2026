@@ -1,0 +1,31 @@
+services:
+  frontend:
+    image: ghcr.io/berufskolleg-meschede/webshop-react:latest
+    container_name: sf_webshop
+    restart: unless-stopped
+    ports:
+      - '51020:8080'
+    labels:
+      - 'com.centurylinklabs.watchtower.enable=true'
+      - 'traefik.enable=true'
+      - 'traefik.http.routers.webshop.rule=Host(`${WEBSHOP_HOST:-webshop.local}`)'
+      - 'traefik.http.routers.webshop.entrypoints=web'
+      - 'traefik.http.services.webshop.loadbalancer.server.port=8080'
+    networks:
+      - SmartFactory
+
+  watchtower:
+    image: containrrr/watchtower
+    restart: unless-stopped
+    environment:
+      - WATCHTOWER_LABEL_ENABLE=true
+      - DOCKER_API_VERSION=1.40
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: --interval 60 --cleanup
+    networks:
+      - SmartFactory
+
+networks:
+  SmartFactory:
+    name: SmartFactory

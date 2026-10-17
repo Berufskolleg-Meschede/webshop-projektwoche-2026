@@ -1,0 +1,190 @@
+/*
+ * BKM WebShop design tokens — see docs/design-system.md.
+ * Light values live on :root; dark values apply via the OS preference or an
+ * explicit `.dark` class on <html> ("dim, don't invert").
+ */
+:root {
+  color-scheme: light;
+
+  /* Borders */
+  --BKM_WebShop-border-width: 2px;
+
+  /* Sticker shadows: hard offset, no blur. Light: ink-colored. Dark: near-black, since a light ink shadow glares on dark surfaces */
+  --BKM_WebShop-shadow-color: var(--BKM_WebShop-ink);
+  --BKM_WebShop-shadow-offset-ink-press: 1px 2px 0 var(--BKM_WebShop-shadow-color);
+  --BKM_WebShop-shadow-offset-ink-sm: 2px 3px 0 var(--BKM_WebShop-shadow-color);
+  --BKM_WebShop-shadow-offset-ink: 2px 4px 0 var(--BKM_WebShop-shadow-color);
+  --BKM_WebShop-shadow-offset-ink-hover: 3px 4px 0 var(--BKM_WebShop-shadow-color);
+  --BKM_WebShop-shadow-offset-ink-md: 3px 5px 0 var(--BKM_WebShop-shadow-color);
+  --BKM_WebShop-shadow-offset-ink-lg: 3px 6px 0 var(--BKM_WebShop-shadow-color);
+  --BKM_WebShop-shadow-offset-ink-md-hover: 4px 7px 0 var(--BKM_WebShop-shadow-color);
+
+  /* Radii */
+  --BKM_WebShop-radius-none: 0;
+  --BKM_WebShop-radius-sm: 4px;
+  --BKM_WebShop-radius-md: 8px;
+  --BKM_WebShop-radius-lg: 12px;
+  --BKM_WebShop-radius-xl: 16px;
+  --BKM_WebShop-radius-full: 9999px;
+
+  /* Spacing */
+  --BKM_WebShop-space-none: 0;
+  --BKM_WebShop-space-xxs: 2px;
+  --BKM_WebShop-space-xs: 4px;
+  --BKM_WebShop-space-sm: 8px;
+  --BKM_WebShop-space-md: 12px;
+  --BKM_WebShop-space-lg: 16px;
+  --BKM_WebShop-space-xl: 20px;
+  --BKM_WebShop-space-xxl: 24px;
+  --BKM_WebShop-space-xxxl: 32px;
+  --BKM_WebShop-space-huge: 48px;
+
+  /* Core colors */
+  --BKM_WebShop-bg: #f4f6fb;
+  --BKM_WebShop-card-bg: #ffffff;
+  --BKM_WebShop-ink: #202860;
+  --BKM_WebShop-ink-muted: #506898;
+  --BKM_WebShop-border: #202860;
+  --BKM_WebShop-header-bg: #f4f6fb;
+  --BKM_WebShop-tab-bar-bg: #f8f9fd;
+  --BKM_WebShop-tab-bar-border: #d9deec;
+  --BKM_WebShop-input-bg: #ffffff;
+  --BKM_WebShop-input-border: #8a94b4;
+  --BKM_WebShop-chip-inactive-bg: #e6eaf5;
+  --BKM_WebShop-surface-elevated: #ffffff;
+  --BKM_WebShop-overlay-scrim: rgba(16, 20, 48, 0.5);
+  --BKM_WebShop-focus-ring: #2f6fed;
+
+  /* Project extension: BKM logo red (logo navy is `ink`, logo steel blue is `ink-muted`) for CTAs and primary interactive elements */
+  --BKM_WebShop-primary: #dc2f2f;
+  --BKM_WebShop-on-primary: #ffffff;
+
+  /* Accent colors */
+  --BKM_WebShop-amber: #fbbf24;
+  --BKM_WebShop-amber-700: #a16207;
+  --BKM_WebShop-amber-900: #7c2d12;
+  --BKM_WebShop-green: #10b981;
+  --BKM_WebShop-danger: #ef4444;
+  /* Text-grade variants (>= 4.5:1 on bg and card-bg); `danger`/accent fills stay for borders, icons and fills */
+  --BKM_WebShop-danger-ink: #c62828;
+  --BKM_WebShop-on-amber: #101431;
+  --BKM_WebShop-on-green: #101431;
+  --BKM_WebShop-placeholder: #506898;
+  --BKM_WebShop-info: #0ea5e9;
+  --BKM_WebShop-violet: #a855f7;
+  --BKM_WebShop-violet-ink: #6d28d9;
+  --BKM_WebShop-blue: #0ea5e9;
+  --BKM_WebShop-pink: #f43f5e;
+  --BKM_WebShop-pink-ink: #be123c;
+  --BKM_WebShop-orange: #f97316;
+  --BKM_WebShop-orange-ink: #c2410c;
+  --BKM_WebShop-teal: #14b8a6;
+  --BKM_WebShop-teal-ink: #0f766e;
+
+  /* Warning note, state tints (selected strategy uses the done tint) and disabled button */
+  --BKM_WebShop-warning-bg: #fef3c7;
+  --BKM_WebShop-warning-ink: #7c2d12;
+  --BKM_WebShop-done-bg: #ddf5ec;
+  --BKM_WebShop-locked-bg: #f8f9fd;
+  --BKM_WebShop-locked-border: #a9b3d0;
+  --BKM_WebShop-disabled-bg: #e6eaf5;
+  --BKM_WebShop-disabled-ink: #506898;
+
+  /* Product colours: fixed in both themes (the shaker colour does not follow the theme) */
+  --BKM_WebShop-product-red: #c62828;
+  --BKM_WebShop-product-silver: #aeb4ba;
+  --BKM_WebShop-product-black: #1c1c1c;
+  --BKM_WebShop-product-blue: #2563eb;
+  --BKM_WebShop-product-green: #2e8b3e;
+}
+
+/* Dark values, shared by the OS preference and the explicit class */
+@media (prefers-color-scheme: dark) {
+  :root:not(.light) {
+    color-scheme: dark;
+    --BKM_WebShop-bg: #12141f;
+    --BKM_WebShop-card-bg: #1b1e2e;
+    --BKM_WebShop-ink: #e8eaf2;
+    --BKM_WebShop-ink-muted: #9aa3bd;
+    --BKM_WebShop-border: #343a58;
+    --BKM_WebShop-header-bg: #171a28;
+    --BKM_WebShop-tab-bar-bg: #171a28;
+    --BKM_WebShop-tab-bar-border: #272c45;
+    --BKM_WebShop-input-bg: #1b1e2e;
+    --BKM_WebShop-input-border: #6b7399;
+    --BKM_WebShop-chip-inactive-bg: #242840;
+    --BKM_WebShop-surface-elevated: #232740;
+    --BKM_WebShop-overlay-scrim: rgba(0, 0, 0, 0.65);
+    --BKM_WebShop-focus-ring: #8aa4ff;
+    --BKM_WebShop-shadow-color: #000000;
+    --BKM_WebShop-primary: #d6353b;
+
+    --BKM_WebShop-green: #34d399;
+    --BKM_WebShop-danger: #f87171;
+    --BKM_WebShop-danger-ink: #f87171;
+    --BKM_WebShop-on-amber: #101431;
+    --BKM_WebShop-on-green: #101431;
+    --BKM_WebShop-placeholder: #9aa3bd;
+    --BKM_WebShop-info: #38bdf8;
+    --BKM_WebShop-violet: #c4b5fd;
+    --BKM_WebShop-violet-ink: #c4b5fd;
+    --BKM_WebShop-blue: #60a5fa;
+    --BKM_WebShop-pink: #fb7185;
+    --BKM_WebShop-pink-ink: #fda4af;
+    --BKM_WebShop-orange: #fb923c;
+    --BKM_WebShop-orange-ink: #fdba74;
+    --BKM_WebShop-teal: #2dd4bf;
+    --BKM_WebShop-teal-ink: #5eead4;
+    --BKM_WebShop-warning-bg: #3a2f12;
+    --BKM_WebShop-warning-ink: #fde68a;
+    --BKM_WebShop-done-bg: #123d33;
+    --BKM_WebShop-locked-bg: #171a28;
+    --BKM_WebShop-locked-border: #4a5278;
+    --BKM_WebShop-disabled-bg: #242840;
+    --BKM_WebShop-disabled-ink: #9aa3bd;
+  }
+}
+
+:root.dark {
+  color-scheme: dark;
+  --BKM_WebShop-bg: #12141f;
+  --BKM_WebShop-card-bg: #1b1e2e;
+  --BKM_WebShop-ink: #e8eaf2;
+  --BKM_WebShop-ink-muted: #9aa3bd;
+  --BKM_WebShop-border: #343a58;
+  --BKM_WebShop-header-bg: #171a28;
+  --BKM_WebShop-tab-bar-bg: #171a28;
+  --BKM_WebShop-tab-bar-border: #272c45;
+  --BKM_WebShop-input-bg: #1b1e2e;
+  --BKM_WebShop-input-border: #6b7399;
+  --BKM_WebShop-chip-inactive-bg: #242840;
+  --BKM_WebShop-surface-elevated: #232740;
+  --BKM_WebShop-overlay-scrim: rgba(0, 0, 0, 0.65);
+  --BKM_WebShop-focus-ring: #8aa4ff;
+  --BKM_WebShop-shadow-color: #000000;
+  --BKM_WebShop-primary: #d6353b;
+
+  --BKM_WebShop-green: #34d399;
+  --BKM_WebShop-danger: #f87171;
+  --BKM_WebShop-danger-ink: #f87171;
+  --BKM_WebShop-on-amber: #101431;
+  --BKM_WebShop-on-green: #101431;
+  --BKM_WebShop-placeholder: #9aa3bd;
+  --BKM_WebShop-info: #38bdf8;
+  --BKM_WebShop-violet: #c4b5fd;
+  --BKM_WebShop-violet-ink: #c4b5fd;
+  --BKM_WebShop-blue: #60a5fa;
+  --BKM_WebShop-pink: #fb7185;
+  --BKM_WebShop-pink-ink: #fda4af;
+  --BKM_WebShop-orange: #fb923c;
+  --BKM_WebShop-orange-ink: #fdba74;
+  --BKM_WebShop-teal: #2dd4bf;
+  --BKM_WebShop-teal-ink: #5eead4;
+  --BKM_WebShop-warning-bg: #3a2f12;
+  --BKM_WebShop-warning-ink: #fde68a;
+  --BKM_WebShop-done-bg: #123d33;
+  --BKM_WebShop-locked-bg: #171a28;
+  --BKM_WebShop-locked-border: #4a5278;
+  --BKM_WebShop-disabled-bg: #242840;
+  --BKM_WebShop-disabled-ink: #9aa3bd;
+}
